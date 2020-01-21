@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SV_toy1
 {
-    internal class Car
+    public class Car
     {
         public string carName { get; set; }
         public string carType { get; set; }

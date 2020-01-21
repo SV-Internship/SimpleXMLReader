@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:SV_toy1"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <local:MainViewModel x:Key="MainVM"/>
     </Application.Resources>
 </Application>
