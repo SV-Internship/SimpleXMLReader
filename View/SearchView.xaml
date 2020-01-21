@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="XmlReader.View.SearchView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:XmlReader.View"
+        mc:Ignorable="d"
+        d:DesignHeight="40" d:DesignWidth="450">
+    <Grid>
+        <StackPanel Orientation="Horizontal">
+            <ComboBox Width="70" SelectedIndex="{Binding SelectedIndex}" >
+                <ComboBoxItem Content="Model"/>
+                <ComboBoxItem Content="Type"/>
+                <ComboBoxItem Content="Years"/>
+                <ComboBoxItem Content="Fuel"/>
+                <ComboBoxItem Content="Color"/>
+            </ComboBox>
+            <TextBox Width="280" Text="{Binding SearchText}"/>
+            <Button Width="25" Content="↵" Command="{Binding SearchCar}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

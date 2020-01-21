@@ -1,0 +1,62 @@
+﻿<Window x:Class="XmlReader.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XmlReader.ViewModel"
+        xmlns:i ="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="420">
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded" >
+            <i:InvokeCommandAction Command="{Binding WindowLoadedCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.9*" />
+            <RowDefinition Height="0.95*" />
+            <RowDefinition Height="2.2*" />
+            <RowDefinition Height="4*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <GroupBox Header="Open" Grid.Row="0" Padding="5">
+            <ContentControl Content="{Binding ContentView1}"/>
+        </GroupBox>
+        <GroupBox Header="Search" Grid.Row="1" Padding="5">
+            <ContentControl Content="{Binding ContentView2}"/>
+        </GroupBox>
+        <GroupBox Header="Filter" Grid.Row="2">
+            <ContentControl Content="{Binding ContentView3}"/>
+        </GroupBox>
+        <ListView Grid.Row="3" ItemsSource="{Binding Cars}" SelectedIndex="{Binding SearchIndex}">
+            <ListView.View >
+                <GridView AllowsColumnReorder="true">
+                    <GridViewColumn Width="80" DisplayMemberBinding="{Binding Path=Model}">
+                        <GridViewColumnHeader Content="Model" Command="{Binding SortModel}"/>
+                    </GridViewColumn>
+                    <GridViewColumn Width="80" DisplayMemberBinding="{Binding Path=Type}">
+                        <GridViewColumnHeader Content="Type" Command="{Binding SortType}"/>
+                    </GridViewColumn>
+                    <GridViewColumn Width="80" DisplayMemberBinding="{Binding Path=Years}">
+                        <GridViewColumnHeader Content="Years" Command="{Binding SortYears}"/>
+                    </GridViewColumn>
+                    <GridViewColumn Width="80" DisplayMemberBinding="{Binding Path=Fuel}">
+                        <GridViewColumnHeader Content="Fuel" Command="{Binding SortFuel}"/>
+                    </GridViewColumn>
+                    <GridViewColumn Width="80" DisplayMemberBinding="{Binding Path=Color}">
+                        <GridViewColumnHeader Content="Color" Command="{Binding SortColor}"/>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Grid.Row="4" Orientation="Horizontal">
+            <Label HorizontalContentAlignment="Center" Content="© 2020 StradVision Proprietary and Confidential" FontSize="9" Foreground="Gray" Width="350"/>
+            <Label HorizontalContentAlignment="Center" Content="Total : " FontSize="9" Width="35"/>
+            <Label HorizontalContentAlignment="Center" Content="{Binding Cars.Count}" FontSize="9" Width="25"/>
+        </StackPanel>
+    </Grid>
+</Window>
